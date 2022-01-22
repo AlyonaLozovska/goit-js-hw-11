@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homework 11</title>
+</head>
+
+<body>
+  <form class = "inline search-form js-search-form">
+    <div class = "form-group mx-sm-3 md-2">
+      <label form = "searchQuery" class="sr-only"></label>
+      <input
+        type="text"
+        class="form-control"
+        name="query"
+        id="searchQuery"
+        placeholder="Search images"
+        autocomplete="off"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">
+
+<!-- поиск значек -->
+
+    </button>
+  </form>
+
+  <ul class="articles js-articles-container"></ul>
+
+  <button
+    type="button"
+    class="btn btn-primary button"
+    data-action="load-more"
+  >
+  <span
+    class="spinner-border spinner-border-sn spinner is-hidden"
+    role="status"
+    aria-hidden="true"
+  ></span>
+
+  <span class="label">LOAD MORE</span>
+  </button>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

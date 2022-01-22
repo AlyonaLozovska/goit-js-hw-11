@@ -1,1 +1,0 @@
-Notiflix Notify => https://notiflix.github.io/notify
