@@ -28,6 +28,7 @@
   "dependencies": {
     "form-data": "^4.0.0",
     "modern-normalize": "^1.1.0",
-    "notiflix": "^3.2.2"
+    "notiflix": "^3.2.2",
+    "notifyjs": "^3.0.0"
   }
 }
