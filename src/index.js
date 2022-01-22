@@ -1,7 +1,7 @@
 import './sass/common.scss';
 import './css/styles.css';
-import  'node_modules/modern-normalize/modern-normalize.css' ;
-import NewsApiService from './js/news-service';
+import './js/news/news-service';
+import NewsApiService from './js/news/news-service';
 
 const refs = {
     searchForm: document.querySelector('.js-search-form'),
@@ -15,7 +15,6 @@ console.log(newsApiService);
 refs.searchForm.addEventListener('submit', onSearch);
 refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
-// let searchQuery = "";
 
 function onSearch(e) {
     e.preventDefault();        //Чтоб не перезагружалась страничка при субмите формы

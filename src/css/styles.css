@@ -1,4 +1,4 @@
-* {
+*{
   box-sizing: border-box;
 }
 
@@ -17,4 +17,40 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+} */
+
+
+  .load-more {
+    display: block;
+    background-color: #69bdd6;
+    margin: 0 auto;
+    border: none;
+    color: white;
+    padding: 7px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.is-hidden {
+    display: none;
+}
+
+.end-collection-text {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #787878;
 }

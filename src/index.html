@@ -10,8 +10,8 @@
 
 <body>
   <form class = "inline search-form js-search-form">
-    <div class = "form-group mx-sm-3 md-2">
-      <label form = "searchQuery" class="sr-only"></label>
+    <div class = "form-group">
+      <label form = "searchQuery" class="search-only"></label>
       <input
         type="text"
         class="form-control"
@@ -21,28 +21,28 @@
         autocomplete="off"
       />
     </div>
-    <button type="submit" class="btn btn-primary mb-2">
-
-<!-- поиск значек -->
-
-    </button>
+    <button type="button" class="btn search-button">Search</button>
   </form>
 
   <ul class="articles js-articles-container"></ul>
 
-  <button
-    type="button"
-    class="btn btn-primary button"
-    data-action="load-more"
-  >
-  <span
-    class="spinner-border spinner-border-sn spinner is-hidden"
-    role="status"
-    aria-hidden="true"
-  ></span>
+  <section class='wrapper-box'>
+    <div class="gallery">
+      <!-- Карточки изображений -->
+    </div>
+  </section>
 
-  <span class="label">LOAD MORE</span>
-  </button>
+  <div>
+    <button
+      type="button"
+      class="load-more is-hidden"
+      data-action="load-more">LOAD MORE</button>
+        <p class="end-collection-text is-hidden">
+          End of collection...
+        </p>
+  </div>
+  
+  <button type="button" class="back_to_top"></button>
 
   <script src="index.js"></script>
 </body>
