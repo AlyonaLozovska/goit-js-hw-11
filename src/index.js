@@ -4,7 +4,7 @@ import './css/styles.css';
 import './sass/gallery.scss';
 import './partials/gallery.html';
 import itemsTemplate from './template/index.hbs';
-//import './js/news/news-service';
+// import './js/news/news-service';
 //import SimpleLightbox from "simplelightbox";
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
@@ -27,7 +27,8 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
     e.preventDefault();        //Чтоб не перезагружалась страничка при субмите формы
     //clearList();
     
-    inputText = e.currentTarget.elements.searchQuery.value.trim;
+     inputText = e.currentTarget.elements.searchQuery.value.trim;
+    // inputText = e.currentTarget.elements.query.value.trim;
 
     if(inputText === '') {
       clearList();
@@ -67,18 +68,37 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
     // });
 
 
+// async function onLoadMore() {
+//     inputText.fetchArticles().then(appendArticlesMarkup);
+//     smoothScroll();
+// }
+
 async function onLoadMore() {
-    inputText.fetchArticles().then(appendArticlesMarkup);
+  try {
+    pageAmount += 1;
+    const responce = await makesRequest(inputText, pageAmount);
+
+    createGalleryList(responce.hits);
     smoothScroll();
+
+    pageLength += responce.hits.length;
+
+    if (pageLength >= responce.totalHits) {
+      Notify.info("End of collection...");
+      refs.loadButton.classList.add('visually-hidden');
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-function appendArticlesMarkup(articles) {
+function createGalleryList(articles) {
   const markup = itemsTemplate(articles);
     refs.articlesContainer.insertAdjacentHTML('beforeend', articlesTpl(articles));
     lightbox();
 }                                                      //Вставляет результат вызова шаблона
 
-function clearArticlesContainer() {
+function clearList() {
     refs.articlesContainer.innerHTML = '';              //Очищает контейнер при сл.запросе поиска
 }
 
