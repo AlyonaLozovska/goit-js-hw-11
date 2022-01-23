@@ -26,9 +26,12 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "form-data": "^4.0.0",
+    "handlebars": "^4.7.7",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.2",
-    "notifyjs": "^3.0.0"
+    "notifyjs": "^3.0.0",
+    "simplelightbox": "^2.10.1"
   }
 }

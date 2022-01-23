@@ -1,30 +1,46 @@
-export default class NewApiService {
+import axios from 'axios';
+
+async function makesRequest (search, pageAmount) {
+    const API_KEY = '25261319-41493d7d09d351884ef55fa82';
+    const BASE_URL = 'https://pixabay.com/api/';
+    const options = {
+        headers: {
+            key: API_KEY,   //ключ IPI 
+            q: search,
+            image_type: 'photo',
+            orientation: 'horizontal',
+            safesearch: true,
+            page: pageAmount,
+            per_page: 40,
+        },
+    }; 
+
+    const responce = await axios.get(URL, options);
+    return responce.data;
+}
+
+export { makesRequest };
+
+export default class inputText {
     constructor() {
-        this.searchQuery = '';
+        this.searchQuery = '';                     //Сервис отвечает за хранение запроса + номер группы
         this.page = 1;
     }
     
     featchArticles() {
-        //console.log(this);
-        const options = {
-            headers: {
-                ApiKey: '5c745d00a7194d29944a14455843bdb1',   //ключ IPI 
-            },
-        };
-
-        //const url = 'https://newsapi.org/v2/everything?q=$(this.searchQueary)&language=en&pageSize=10&page=$(this.page)';
-        const url = 'https://newsapi.org/v2/everything?q=tesla&from=2021-12-22&sortBy=publishedAt&apiKey=5c745d00a7194d29944a14455843bdb1'
-        //const url = 'https://newsapi.org/v2/everything?q=Apple&from=2022-01-22&sortBy=popularity&apiKey=API_KEY'
+         const url = '$(BASE_URL)/everything?q=$(this.searchQueary)&language=en&pageSize=20&page=$(this.page)';
+        
 
         return fetch(url, options)       //Получаем промис/return
-            .then(r => r.json())
-            .then(data => {
+            .then(response => response.json())
+            .then(({ articles }) => {
                 this.incrementPage();
         
-                return data.articles;
+                return articles;
             });
+    
     }
-        
+
     incrementPage() {
         this.page += 1;           //Добавление сл.страницы/увеличение
     }
@@ -36,7 +52,7 @@ export default class NewApiService {
     get query() {
         return this.searchQuery;
     }
-
+                                                //Контролирует термин запроса
     set query(newQuery) {
         this.searchQueary = newQuery;
     }
