@@ -28,7 +28,7 @@ export default class inputText {
     }
     
     featchArticles() {
-         const url = '$(BASE_URL)/everything?q=$(this.searchQueary)&language=en&pageSize=20&page=$(this.page)';
+         const url = '$(BASE_URL)/?q=$(this.searchQueary)&language=en&pageSize=20&page=$(this.page)';
         
 
         return fetch(url, options)       //Получаем промис/return
