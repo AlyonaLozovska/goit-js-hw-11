@@ -4,9 +4,11 @@ import './css/styles.css';
 import './sass/gallery.scss';
 import './partials/gallery.html';
 import itemsTemplate from './template/index.hbs';
-// import './js/news/news-service';
+// import inputText from './js/news/news-service';
 //import SimpleLightbox from "simplelightbox";
 import 'simplelightbox/dist/simple-lightbox.min.css';
+
+// const makesRequest  = new inputText ();
 
 const refs = {
     searchForm: document.querySelector('#search-form'),
@@ -84,7 +86,7 @@ async function onLoadMore() {
     pageLength += responce.hits.length;
 
     if (pageLength >= responce.totalHits) {
-      Notify.info("End of collection...");
+      Notify.info("We're sorry, but you've reached the end of search results.");
       refs.loadButton.classList.add('visually-hidden');
     }
   } catch (error) {
@@ -94,16 +96,16 @@ async function onLoadMore() {
 
 function createGalleryList(articles) {
   const markup = itemsTemplate(articles);
-    refs.articlesContainer.insertAdjacentHTML('beforeend', articlesTpl(articles));
+    refs.gallery.insertAdjacentHTML('beforeend', articlesTpl(articles));
     lightbox();
 }                                                      //Вставляет результат вызова шаблона
 
 function clearList() {
-    refs.articlesContainer.innerHTML = '';              //Очищает контейнер при сл.запросе поиска
+    refs.gallery.innerHTML = '';              //Очищает контейнер при сл.запросе поиска
 }
 
 function lightbox() {
-    let lightbox = new SimpleLightbox('.articlesContainer a', {
+    let lightbox = new SimpleLightbox('.gallery a', {
       captions: false,
       captionDelay: 250,
       enableKeyboard: true,
@@ -114,7 +116,7 @@ function lightbox() {
   
   function smoothScroll() {
     const { height: cardHeight } = document
-      .querySelector('.articlesContainer')
+      .querySelector('.gallery')
       .firstElementChild.getBoundingClientRect();
   
     window.scrollBy({
