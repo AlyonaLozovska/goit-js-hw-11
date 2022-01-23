@@ -28,8 +28,8 @@ export default class inputText {
     }
     
     featchArticles() {
-         const url = '$(BASE_URL)/?q=$(this.searchQueary)&language=en&pageSize=20&page=$(this.page)';
-        
+         //const url = 'https://pixabay.com/api/?key=25371250-941ff682c7395853bb75ed125=${search}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${this.page}`;
+         const url = '$(BASE_URL)/?key=$(API_KEY)=${search}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=$(this.page)';
 
         return fetch(url, options)       //Получаем промис/return
             .then(response => response.json())

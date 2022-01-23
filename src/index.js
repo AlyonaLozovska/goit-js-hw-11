@@ -4,9 +4,9 @@ import './css/styles.css';
 import './sass/gallery.scss';
 import './partials/gallery.html';
 import itemsTemplate from './template/index.hbs';
-import './js/news/news-service';
-import SimpleLightbox from "simplelightbox";
-
+//import './js/news/news-service';
+//import SimpleLightbox from "simplelightbox";
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const refs = {
     searchForm: document.querySelector('#search-form'),
@@ -25,7 +25,7 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
  async function onSearch(e) {
     e.preventDefault();        //Чтоб не перезагружалась страничка при субмите формы
-    clearList();
+    //clearList();
     
     inputText = e.currentTarget.elements.searchQuery.value.trim;
 
@@ -36,7 +36,7 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
     pageAmount = 1;
     pageLength = 40;
-    refs.loadButton.classList.add('visually-hidden');
+    //refs.loadButton.classList.add('visually-hidden');
 
   try {
     const responce = await makesRequest(inputText, pageAmount);
@@ -59,12 +59,12 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
   }
 }
         
-    inputText.resetPage();        //Сбрасываем форму на начало при вызове нового значения
+    //inputText.resetPage();        //Сбрасываем форму на начало при вызове нового значения
     
-    inputText.fetchArticles().then(articles => {
-        clearArticlesContainer();
-        appendArticlesMarkup(articles);
-    });
+    // inputText.fetchArticles().then(articles => {
+    //     clearArticlesContainer();
+    //     appendArticlesMarkup(articles);
+    // });
 
 
 async function onLoadMore() {
