@@ -145,3 +145,24 @@ function lightbox() {
       behavior: 'smooth',
     });
   }
+
+  import axios from 'axios';
+
+async function makesRequest (search, pageAmount) {
+    const API_KEY = '25261319-41493d7d09d351884ef55fa82';
+    const BASE_URL = 'https://pixabay.com/api/';
+    const options = {
+        headers: {
+            key: API_KEY,   //ключ IPI 
+            q: search,
+            image_type: 'photo',
+            orientation: 'horizontal',
+            safesearch: true,
+            page: pageAmount,
+            per_page: 40,
+        },
+    }; 
+
+    const responce = await axios.get(URL, options);
+    return responce.data;
+}
