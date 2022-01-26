@@ -6,16 +6,11 @@ import './partials/gallery.html';
 import itemsTemplate from './template/index.hbs';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import SimpleLightbox from "simplelightbox";
-// import makesRequest from './js/news-service';
+import NewsApiService from './js/news-service';
+
 //import smoothScroll from './js/scroll';
 
-
-//const smoothScroll = new scroll();
-// const inputText = new inputText();
-// const success = inputText.perPage;
-
-
-
+const inputText = new NewsApiService();
 
 
 
@@ -49,7 +44,7 @@ refs.loadMoreBtn.classList.add('is-hidden');
       Notiflix.Notify.failure('Please enter your search data.');
     }
     else {
-      const response = await inputText.newApiService();
+      const response = await inputText.makesRequest();
       const {
         data: { hits, total, totalHits },
             } = response;
@@ -57,15 +52,15 @@ refs.loadMoreBtn.classList.add('is-hidden');
     
 
     if (hits.length === 0) {
-      Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+      // Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     } else {
       refs.loadMoreBtn.classList.remove('is-hidden');
-    Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
+    // Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
     createGalleryList(hits);
   }
 }
 } catch (error) {
-  Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
+  // Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
 console.log(error.message);
 }
 };
@@ -80,7 +75,7 @@ async function onLoadMore(e) {
   } = response;
 
   if (hits.length === 0) {
-    Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+    // Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
   } else createGalleryList(hits); 
 };
 
@@ -120,7 +115,7 @@ async function createGalleryList(hits) {
 //     </a>`;
 //   })
 //   .join('');
-refs.container.insertAdjacentHTML('beforeend', markup);                                                   //Вставляет результат вызова шаблона
+refs.gallery.insertAdjacentHTML('beforeend', markup);                                                   //Вставляет результат вызова шаблона
 
 simpleLightbox();
   scroll();
