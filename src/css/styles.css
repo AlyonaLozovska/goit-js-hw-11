@@ -9,7 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
   color: #212121;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 #search-box {
@@ -36,6 +36,10 @@ body {
     display: none;
 }
 
+.spinner.is-hidden {
+  display: none;
+}
+ 
 .end-collection-text {
     text-align: center;
     font-size: 16px;
@@ -53,4 +57,29 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #6465aab2;
+}
+
+.info {
+  display: flex;
+  text-align: center;
+  font-size: 12px;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color:  #b2d1da;
+}
+
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 12px;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color:  #b2d1da;
+}
+
+.text {
+  font-weight: normal;
+  font-size: 11px;
 }
