@@ -8,10 +8,13 @@ import itemsTemplate from './template/index.hbs';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import SimpleLightbox from "simplelightbox";
 import NewsApiService from './js/news-servise';
-// import LoadMoreButton from './js/load-more-btn';
+import LoadMoreButton from './js/load-more-btn';
 
 const inputText = new NewsApiService();
-// const loadMoreBtn = new LoadMoreButton();
+const loadMoreBtn = new LoadMoreButton({
+  selector: '[data-action="load-more"]',
+  hidden: true,
+});
 
 const refs = {
   searchForm: document.querySelector('#search-form'),
@@ -23,8 +26,8 @@ const refs = {
 
 
 refs.searchForm.addEventListener('submit', onSearch);
-refs.loadMoreBtn.addEventListener('click', onLoadMore);
-refs.loadMoreBtn.classList.add('is-hidden');
+loadMoreBtn.refs.button.addEventListener('click', onLoadMore);
+// refs.loadMoreBtn.classList.add('is-hidden');
 
 
 async function onSearch(e) {
@@ -43,11 +46,14 @@ async function onSearch(e) {
     Notiflix.Notify.failure('Please enter your search data.');
   }
   else {
+    loadMoreBtn.show();
+    loadMoreBtn.disable();
     const response = await inputText.makesRequest();
     const {
       data: { hits, total, totalHits },
           } = response;
           clearList();
+          loadMoreBtn.enable();
   
           
 
@@ -59,11 +65,16 @@ async function onSearch(e) {
   createGalleryList(hits);
   }
 
+  loadMoreBtn.show();
+  loadMoreBtn.disable();
+
 }
 
 } catch (error) {
 Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
 console.log(error.message);
+
+loadMoreBtn.enable();
 }
 };
 

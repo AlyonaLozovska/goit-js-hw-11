@@ -1,8 +1,9 @@
 import axios from 'axios';
-// const axios = require('axios');
+
 
 const BASE_URL = 'https://pixabay.com/api';
 const API_KEY = '25261319-41493d7d09d351884ef55fa82';
+
 
 export default class NewsApiService {
     constructor() {
