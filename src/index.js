@@ -66,7 +66,7 @@ async function onSearch(e) {
   }
 
   loadMoreBtn.show();
-  loadMoreBtn.disable();
+  // loadMoreBtn.disable();
 
 }
 
@@ -80,10 +80,10 @@ loadMoreBtn.enable();
 
       
 
-async function onLoadMore(e) {
-e.preventDefault();
-
-const response = await inputText.newApiService();
+async function onLoadMore() {
+// e.preventDefault();
+// console.log('more');
+const response = await inputText.makesRequest();
 const {
   data: { hits },
 } = response;
